@@ -35,7 +35,7 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 DatabaseHelper myDB = new DatabaseHelper(AddActivity.this);
-                myDB.addAsset(Integer.valueOf(asset_input.getText().toString().trim()),
+                myDB.addAsset(asset_input.getText().toString().trim(),
                         make_input.getText().toString().trim(),
                         model_input.getText().toString().trim(),
                         current_user_input.getText().toString().trim());

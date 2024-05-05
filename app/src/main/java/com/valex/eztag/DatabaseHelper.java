@@ -31,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_ASSET + " INTEGER, " +
+                COLUMN_ASSET + " TEXT, " +
                 COLUMN_MAKE + " TEXT, " +
                 COLUMN_MODEL + " TEXT, " +
                 COLUMN_USER + " TEXT);";
@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addAsset(int asset, String make, String model, String current_user){
+    void addAsset(String asset, String make, String model, String current_user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
