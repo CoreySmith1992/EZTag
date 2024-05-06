@@ -7,3 +7,21 @@ Quickly search or filter by location, user, asset tag, etc. <br>
 Associate pictures with items. <br>
 Import and Export your asset library as a CSV file. <br>
 Customizable fields. <br>
+
+The trashcan on the main screen will delete the entire database.
+Tap a record to edit or delete.
+Tap the plus on the bottom right to add a record.
+
+If you have any issues, please email me CoreySmith1992@gmail.com
+
+Changelog
+4/21/2024: Not able to get original design idea to work properly. Reverting to easier to implement UI based on current knowledge.
+
+5/04/2024: Edited text sizes of make_txt, model_txt, current_user_txt, and asset_txt to fit screen better. 
+           Added Delete All button to main screen. 
+
+5/05/2024: Added Serial number field.
+           Truncated text on main screen so that text views do not overlap with long models/serials/etc. 
+
+
+          
