@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddActivity extends AppCompatActivity {
 
-    EditText asset_input, make_input, model_input, current_user_input;
+    EditText asset_input, make_input, model_input, current_user_input, serial_input;
     Button add_asset;
 
     @Override
@@ -30,6 +30,7 @@ public class AddActivity extends AppCompatActivity {
         make_input = findViewById(R.id.make_input);
         model_input = findViewById(R.id.model_input);
         current_user_input = findViewById(R.id.current_user_input);
+        serial_input = findViewById(R.id.serial_input);
         add_asset = findViewById(R.id.add_asset);
         add_asset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +39,8 @@ public class AddActivity extends AppCompatActivity {
                 myDB.addAsset(asset_input.getText().toString().trim(),
                         make_input.getText().toString().trim(),
                         model_input.getText().toString().trim(),
-                        current_user_input.getText().toString().trim());
+                        current_user_input.getText().toString().trim(),
+                        serial_input.getText().toString().trim());
 
             }
         });

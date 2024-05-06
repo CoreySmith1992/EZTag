@@ -19,9 +19,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private Context context;
     Activity activity;
-    private ArrayList id, asset, make, model, current_user;
-
-
+    private ArrayList id, asset, make, model, current_user, serial;
 
     CustomAdapter(Context context,
                   Activity activity,
@@ -29,7 +27,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                   ArrayList asset,
                   ArrayList make,
                   ArrayList model,
-                  ArrayList current_user){
+                  ArrayList current_user,
+                  ArrayList serial){
         this.activity = activity;
         this.context = context;
         this.id = id;
@@ -37,6 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         this.make = make;
         this.model = model;
         this.current_user = current_user;
+        this.serial = serial;
 
     }
     @NonNull
@@ -54,6 +54,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.make_txt.setText(String.valueOf(make.get(position)));
         holder.model_txt.setText(String.valueOf(model.get(position)));
         holder.current_user_txt.setText(String.valueOf(current_user.get(position)));
+        holder.serial_txt.setText(String.valueOf(serial.get(position)));
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +64,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 intent.putExtra("make", String.valueOf(make.get(position)));
                 intent.putExtra("model", String.valueOf(model.get(position)));
                 intent.putExtra("current_user", String.valueOf(current_user.get(position)));
+                intent.putExtra("serial", String.valueOf(serial.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -75,7 +77,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView asset_id_txt, make_txt, model_txt, current_user_txt;
+        TextView asset_id_txt, make_txt, model_txt, current_user_txt, serial_txt;
         LinearLayout mainLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,8 +85,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             make_txt = itemView.findViewById(R.id.make_txt);
             model_txt = itemView.findViewById(R.id.model_txt);
             current_user_txt = itemView.findViewById(R.id.current_user_txt);
+            serial_txt = itemView.findViewById(R.id.serial_txt);
             mainLayout = itemView.findViewById(R.id.mainLayout);
 
         }
     }
+
+
+
 }

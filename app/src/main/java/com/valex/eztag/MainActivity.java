@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton add_button;
 
     DatabaseHelper myDB;
-    ArrayList<String> _id, asset, make, model, current_user;
+    ArrayList<String> _id, asset, make, model, current_user, serial;
     CustomAdapter customAdapter;
 
 
@@ -59,10 +59,11 @@ public class MainActivity extends AppCompatActivity {
         make = new ArrayList<>();
         model = new ArrayList<>();
         current_user = new ArrayList<>();
+        serial = new ArrayList<>();
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(this, MainActivity.this, _id, asset, make, model, current_user);
+        customAdapter = new CustomAdapter(this, MainActivity.this, _id, asset, make, model, current_user, serial);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 make.add(cursor.getString(2));
                 model.add(cursor.getString(3));
                 current_user.add(cursor.getString(4));
+                serial.add(cursor.getString(5));
             }
         }
     }

@@ -15,9 +15,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    EditText asset_input, make_input, model_input, current_user_input;
+    EditText asset_input, make_input, model_input, current_user_input, serial_input;
     Button update_button, delete_button;
-    String id, asset, make, model, current_user;
+    String id, asset, make, model, current_user, serial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class UpdateActivity extends AppCompatActivity {
         make_input = findViewById(R.id.make_input2);
         model_input = findViewById(R.id.model_input2);
         current_user_input = findViewById(R.id.current_user_input2);
+        serial_input = findViewById(R.id.serial_input2);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
         //Call First
@@ -47,7 +48,8 @@ public class UpdateActivity extends AppCompatActivity {
                 make = make_input.getText().toString().trim();
                 model = model_input.getText().toString().trim();
                 current_user = current_user_input.getText().toString().trim();
-                db.updateData(id, asset, make, model, current_user);
+                serial = serial_input.getText().toString().trim();
+                db.updateData(id, asset, make, model, current_user, serial);
                 finish();
             }
         });
@@ -61,19 +63,21 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     void getAndSetIntentData() {
-        if (getIntent().hasExtra("asset") && getIntent().hasExtra("make") && getIntent().hasExtra("model") && getIntent().hasExtra("current_user")) {
+        if (getIntent().hasExtra("asset") && getIntent().hasExtra("make") && getIntent().hasExtra("model") && getIntent().hasExtra("current_user") && getIntent().hasExtra("serial")) {
             //Getting Data
             id = getIntent().getStringExtra("id");
             asset = getIntent().getStringExtra("asset");
             make = getIntent().getStringExtra("make");
             model = getIntent().getStringExtra("model");
             current_user = getIntent().getStringExtra("current_user");
+            serial = getIntent().getStringExtra("serial");
 
             //Setting Data
             asset_input.setText(asset);
             make_input.setText(make);
             model_input.setText(model);
             current_user_input.setText(current_user);
+            serial_input.setText(serial);
         } else {
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
         }

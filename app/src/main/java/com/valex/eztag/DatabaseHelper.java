@@ -21,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_MAKE = "make";
     private static final String COLUMN_MODEL = "model";
     private static final String COLUMN_USER = "current_user";
+    private static final String COLUMN_SERIAL = "serial";
 
     DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +35,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_ASSET + " TEXT, " +
                 COLUMN_MAKE + " TEXT, " +
                 COLUMN_MODEL + " TEXT, " +
-                COLUMN_USER + " TEXT);";
+                COLUMN_USER + " TEXT, " +
+                COLUMN_SERIAL + " TEXT);";
         db.execSQL(query);
     }
     @Override
@@ -43,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addAsset(String asset, String make, String model, String current_user){
+    void addAsset(String asset, String make, String model, String current_user, String serial){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -51,6 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_MAKE, make);
         cv.put(COLUMN_MODEL, model);
         cv.put(COLUMN_USER, current_user);
+        cv.put(COLUMN_SERIAL, serial);
 
         long result = db.insert(TABLE_NAME, null, cv);
         if(result == -1){
@@ -71,13 +74,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void updateData(String row_id, String asset, String make, String model, String current_user){
+    void updateData(String row_id, String asset, String make, String model, String current_user, String serial){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ASSET, asset);
         cv.put(COLUMN_MAKE, make);
         cv.put(COLUMN_MODEL, model);
         cv.put(COLUMN_USER, current_user);
+        cv.put(COLUMN_SERIAL, serial);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){
